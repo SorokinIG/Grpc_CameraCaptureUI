@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+option csharp_namespace = "Grpc_webcamera";
+
+package greet;
+
+// The greeting service definition.
+service Greeter {
+  // Sends a greeting
+  rpc SayHello (HelloRequest) returns (HelloReply);
+}
+
+// The request message containing the user's name.
+message HelloRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings.
+message HelloReply {
+  string message = 1;
+}
+
+message Request{ 
+    string content = 1;
+}
+
+message Response{ 
+    string content=1;
+    bytes data=2;
+}
+ 
+service Messenger{
+  rpc DataStream (stream Request) returns (stream Response);
+}
